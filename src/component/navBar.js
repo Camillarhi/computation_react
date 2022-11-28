@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProtectedRoutes from '../utils/protectedRoutes';
+import axiosService from '../services/axiosService';
+import Authorize from '../utils/authorize';
 
 export default function NavBar() {
     const openNav = () => {
@@ -11,8 +12,12 @@ export default function NavBar() {
             navCollapse.classList.remove("show");
         } else {
             navCollapse.classList.add("show");
-        }
+        };
     };
+
+    const logout = () => {
+        axiosService.Auth.logout()
+    }
 
     return (
         <>
@@ -25,14 +30,14 @@ export default function NavBar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarToggler">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <ProtectedRoutes
+                            <Authorize
                                 authorize={
                                     <>
                                         <li className="nav-item">
                                             <Link to='/history' className="nav-link active fw-bolder mx-2" aria-current="page" >History</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <a href='/' className="nav-link active fw-bolder mx-2 text-danger" aria-current="page" >Logout</a>
+                                            <Link to='/' onClick={() => logout()} className="nav-link active fw-bolder mx-2 text-danger" aria-current="page" >Logout</Link>
                                         </li>
                                     </>}
                                 notAuthorized={

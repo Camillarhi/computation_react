@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const API_ROOT = "http://localhost:7000/";
-console.log({API_ROOT})
+console.log({ API_ROOT })
 export const instance = axios.create({
     baseURL: API_ROOT,
 });
@@ -103,6 +103,7 @@ const Compute = {
     divide: (data) => requests.post("computation/division", data),
     root: (data) => requests.post("computation/root", data),
     modulus: (data) => requests.post("computation/modulus", data),
+    delete: (id) => requests.delete(`computation/${id}`),
 };
 
 export default {

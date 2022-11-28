@@ -1,14 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import NavBar from '../component/navBar';
 import axiosService from '../services/axiosService';
 
 export default function Home() {
     const [display, setDisplay] = useState(0);
-    const [firstInput, setFirstInput] = useState();
-    const [secondInput, setSecondInput] = useState();
-    const [operator, setOperator] = useState();
-
     const {
         register,
         reset,
@@ -40,10 +36,12 @@ export default function Home() {
         }
         setDisplay(response?.data);
         setValue("firstInput", response?.data);
-        setValue("secondInput", "");
+        setValue("secondInput", 0);
     };
 
     return (
+        <>
+        <NavBar />
         <section className="vh-99">
             <div className="container py-5 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
@@ -80,7 +78,6 @@ export default function Home() {
                                             className='form-select'
                                             id="operator"
                                             name="operator"
-                                            onChange={(e) => setOperator(e.target.value)}
                                             {...register("operator", {
                                                 required: "Please choose an operator",
                                             })}>
@@ -126,6 +123,6 @@ export default function Home() {
                 </div>
             </div>
         </section>
-
+</>
     )
 }
