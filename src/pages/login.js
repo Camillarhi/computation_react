@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import axiosService from '../services/axiosService';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -12,8 +13,12 @@ export default function Login() {
         mode: "onChange",
         reValidateMode: "onChange",
     });
-    const logIn = (data) => {
-        navigate("/home")
+    const logIn = async (data) => {
+        const res = await axiosService.Auth.login(data);
+        if (res) {
+            axiosService.Auth.saveAuthData(res);
+            navigate("/home");
+        }
     };
 
     return (

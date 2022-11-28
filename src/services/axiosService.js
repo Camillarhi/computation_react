@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const API_ROOT = process.env.REACT_APP_BASE_URL;
-
+export const API_ROOT = "http://localhost:7000/";
+console.log({API_ROOT})
 export const instance = axios.create({
     baseURL: API_ROOT,
 });
@@ -11,7 +11,7 @@ const responseBody = (res) => res.body;
 
 const getAuthToken = () => {
     const auth = JSON.parse(window.localStorage.getItem("auth"));
-    const token = auth ? auth?.data?.access_token : null;
+    const token = auth ? auth?.access_token : null;
     return token;
 };
 
@@ -79,7 +79,7 @@ const Auth = {
         token = auth.token;
     },
     saveAuthData: (_user) => {
-        window.localStorage.setItem("auth", JSON.stringify(_user));
+        window.localStorage.setItem("auth", JSON.stringify(_user?.data));
         token = _user.data.access_token;
     },
     logout: () => {
@@ -91,13 +91,18 @@ const Auth = {
         console.log("current user", user);
         return JSON.parse(user);
     },
-    login: (data) => requests.post("/api/login", data),
-    register: (data) => requests.post("/account/register", data),
+    login: (data) => requests.post("auth/login", data),
+    register: (data) => requests.post("auth/register", data),
 };
 
 const Compute = {
-    load: () => requests.get("subjects"),
-    getOne: (id) => requests.get(`subjects/${id}`)
+    load: () => requests.get("computation"),
+    add: (data) => requests.post("computation/addition", data),
+    substract: (data) => requests.post("computation/substraction", data),
+    multiply: (data) => requests.post("computation/multiplication", data),
+    divide: (data) => requests.post("computation/division", data),
+    root: (data) => requests.post("computation/root", data),
+    modulus: (data) => requests.post("computation/modulus", data),
 };
 
 export default {
