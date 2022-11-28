@@ -22,7 +22,7 @@ export default function NavBar() {
     return (
         <>
             {/* start nav */}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div className="container">
                     <Link className="navbar-brand" to="/home">Navbar</Link>
                     <button className="navbar-toggler" type="button" onClick={() => openNav()}>
