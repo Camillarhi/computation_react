@@ -6,10 +6,8 @@ export default function Authorize({ authorize, notAuthorized }) {
 
     useEffect(() => {
         if (axiosService.Auth.isAuth()) {
-            console.log(axiosService.Auth.isAuth())
             setIsAuthenticated(true)
         } else {
-            console.log(axiosService.Auth.isAuth())
             setIsAuthenticated(false)
         }
     }, [isAuthenticated])
