@@ -25,7 +25,7 @@ export default function History() {
       <section className="vh-99">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="card mt-5 shadow-2-strong rounded">
+            <div className="card mt-5 shadow-2-strong rounded table-responsive">
               <h3 className='text-center my-3'>History</h3>
               <table className="table">
                 <thead>
