@@ -4,7 +4,7 @@ import History from '../pages/history'
 import Home from '../pages/home'
 import Login from '../pages/login'
 import Register from '../pages/register'
-import ProtectedRoutes from './protectedroutes'
+import ProtectedRoutes from './protectedRoutes'
 
 export default function AppRoutes() {
     return (
