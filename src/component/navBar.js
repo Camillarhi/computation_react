@@ -24,7 +24,7 @@ export default function NavBar() {
             {/* start nav */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div className="container">
-                    <Link className="navbar-brand" to="/home">Navbar</Link>
+                    <Link className="navbar-brand" to="/home">Home</Link>
                     <button className="navbar-toggler" type="button" onClick={() => openNav()}>
                         <span className="navbar-toggler-icon" />
                     </button>

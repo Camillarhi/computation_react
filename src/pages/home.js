@@ -30,7 +30,7 @@ export default function Home() {
         } else if (data?.operator === "%") {
             response = await axiosService.Compute.modulus(data)
         } else if (data?.operator === "√") {
-            response = await axiosService.Compute.modulus(data)
+            response = await axiosService.Compute.root(data)
         } else {
             return;
         }
