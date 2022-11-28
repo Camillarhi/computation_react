@@ -1,11 +1,14 @@
+import { Toaster } from 'react-hot-toast';
 import './App.css';
 import AppRoutes from './utils/routes';
 
 function App() {
   return (
-    <div>
+    <>
       <AppRoutes />
-    </div>
+      <Toaster position="top-center"
+        reverseOrder={true} />
+    </>
   );
 }
 

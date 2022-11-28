@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../component/navBar';
 import axiosService from '../services/axiosService';
+import { successMessage } from '../utils/hotToast';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function Register() {
     const registerUser = async (data) => {
         const response = await axiosService.Auth.register(data)
         if (response?.data?.message) {
+            successMessage("regitered successfully")
             navigate("/");
         }
     }

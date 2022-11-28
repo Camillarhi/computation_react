@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../component/navBar';
 import axiosService from '../services/axiosService';
+import { errorMessage, successMessage } from '../utils/hotToast';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -18,8 +19,11 @@ export default function Login() {
         const res = await axiosService.Auth.login(data);
         console.log(res)
         if (res?.data?.access_token) {
+            successMessage("login successful")
             axiosService.Auth.saveAuthData(res);
             navigate("/home");
+        } else {
+            errorMessage("invalid credentials")
         }
     };
 
