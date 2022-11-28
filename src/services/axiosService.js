@@ -106,7 +106,9 @@ const Compute = {
     delete: (id) => requests.delete(`computation/${id}`),
 };
 
-export default {
+const axiosService = {
     Auth,
     Compute
+
 };
+export default axiosService;
